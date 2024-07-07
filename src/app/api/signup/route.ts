@@ -16,7 +16,6 @@ export async function POST(request: Request) {
     });
 
     const verifyCode = Math.floor(100000 + Math.random() * 90000).toString();
-    console.log(verifyCode);
 
     //user exist and verified
     if (existingUserVerifiedByUsername) {
@@ -37,10 +36,13 @@ export async function POST(request: Request) {
           { status: 400 }
         );
       } else {
+        const expiryDate = new Date();
+        expiryDate.setMinutes(expiryDate.getMinutes() + 10);
+
         const hashedPassword = await bcrypt.hash(password, 10);
         existingUserByEmail.password = hashedPassword;
         existingUserByEmail.verifyCode = verifyCode;
-        existingUserByEmail.verifyCodeExpiry = new Date(Date.now() + 10000);
+        existingUserByEmail.verifyCodeExpiry = expiryDate;
 
         await existingUserByEmail.save();
       }

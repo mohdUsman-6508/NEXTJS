@@ -30,12 +30,16 @@ export default function shadowTalkVerifyEmail({
         <Container style={container}>
           <Section style={coverSection}>
             <Section style={imageSection}>
-              <Img
-                src={"public/shodowTalkLogo.jpeg"}
+              {/* <Img
+                src="public/shodowTalkLogo.jpeg"
                 width="75"
                 height="45"
                 alt="shadowTalk's Logo"
-              />
+              /> */}
+
+              <h1 className=" mx-4 text-bold text-6xl text-black shadow-lg ">
+                Shadow Talk
+              </h1>
             </Section>
             <Section style={upperSection}>
               <Heading style={h1}>Verify your email address</Heading>
@@ -118,7 +122,7 @@ const text = {
 };
 
 const imageSection = {
-  backgroundColor: "#252f3d",
+  backgroundColor: "#F4F6F7",
   display: "flex",
   padding: "20px 0",
   alignItems: "center",

@@ -15,7 +15,7 @@ export async function POST(request: Request) {
       isVerified: true,
     });
 
-    const verifyCode = Math.floor(1000000 + Math.random() * 900000).toString();
+    const verifyCode = Math.floor(100000 + Math.random() * 90000).toString();
     console.log(verifyCode);
 
     //user exist and verified
@@ -86,7 +86,7 @@ export async function POST(request: Request) {
         success: true,
         message: "User registered successfully.Please verify your email",
       },
-      { status: 500 }
+      { status: 200 }
     );
   } catch (error) {
     console.error("Error in registering user", error);

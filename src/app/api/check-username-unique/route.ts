@@ -13,7 +13,6 @@ export async function GET(request: Request) {
   dbConnect();
   try {
     // url me se data kaise nikale
-
     const { searchParams } = new URL(request.url);
     const queryParam = {
       username: searchParams.get("username"),

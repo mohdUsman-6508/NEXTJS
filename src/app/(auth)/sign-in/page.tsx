@@ -1,7 +1,7 @@
 import React from "react";
 // () folders ki grouping
 function page() {
-  return <div>page</div>;
+  return <div>signin page</div>;
 }
 
 export default page;

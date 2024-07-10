@@ -13,7 +13,7 @@ export const authOptions: NextAuthOptions = {
       id: "credentials",
       name: "credentials",
       credentials: {
-        email: { label: "Email", type: "text" },
+        identifier: { label: "Identifier", type: "text" },
         password: { label: "Password", type: "password" },
         // iski help se nextauth ui generate kardega
       },
@@ -51,6 +51,7 @@ export const authOptions: NextAuthOptions = {
       },
     }),
   ],
+
   callbacks: {
     async jwt({ token, user }) {
       // user se data lekar token ko aur powerful bana rahe he
@@ -74,10 +75,12 @@ export const authOptions: NextAuthOptions = {
     },
     //iska fayda ye hua ki hume baar baar db ko call nahin karni padegi
   },
+
   pages: {
     //nextauth saare route khud banadega
     signIn: "/sign-in",
   },
+
   session: {
     strategy: "jwt",
   },

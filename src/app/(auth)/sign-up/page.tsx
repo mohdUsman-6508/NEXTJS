@@ -82,21 +82,19 @@ const page = () => {
         description: response.data.message,
       });
       //iske baad verify section me queryparams se username leke otp verify karlenge
-      router.replace(`/verify/${username}`);
+      router.replace(`/verify-otp/${username}`);
     } catch (error) {
-      console.log("Error in sign up");
       const axiosError = error as AxiosError<ApiResponse>;
       let errorMessage = axiosError.response?.data.message;
       toast({
         title: "Failed to sign up",
         description: errorMessage,
         variant: "destructive",
+        color: "red",
       });
     } finally {
       setIsSubmitting(false);
     }
-
-    console.log(data); //TODO:
   };
 
   return (
@@ -112,7 +110,7 @@ const page = () => {
           <p className="mb-4">Sign up to start your anonymous adventure</p>
         </div>
         <Form {...form}>
-          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
             <FormField
               control={form.control}
               name="username"

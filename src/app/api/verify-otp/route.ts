@@ -42,7 +42,7 @@ export async function POST(request: Request) {
       return Response.json(
         {
           success: false,
-          message: "OTP expired, please signup again",
+          message: "OTP expired, please sign up again",
         },
         {
           status: 400,
@@ -58,7 +58,7 @@ export async function POST(request: Request) {
       );
     }
   } catch (error) {
-    console.error("Error in verifying:", error);
+    console.error("Error in verifying OTP");
     return Response.json(
       {
         success: false,

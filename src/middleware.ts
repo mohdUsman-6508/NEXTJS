@@ -10,8 +10,7 @@ export async function middleware(request: NextRequest) {
     token &&
     (url.pathname.startsWith("/sign-in") ||
       url.pathname.startsWith("/sign-up") ||
-      url.pathname.startsWith("/verify") ||
-      url.pathname.startsWith("/"))
+      url.pathname.startsWith("/verify"))
   ) {
     return NextResponse.redirect(new URL("/dashboard", request.url));
   }
@@ -21,6 +20,8 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/", "/sign-in", "/signp", "/verify/:path*", "/dashboard/:path*"],
+  matcher: ["/sign-in", "/sign-up", "/verify/:path*", "/dashboard/:path*"],
   // kahan kahan middleware chalega
 };
+
+// export const config = { matcher: ["/dashboard"] };

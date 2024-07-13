@@ -58,14 +58,17 @@ const page = () => {
           variant: "destructive",
         });
       } else {
+        console.log("else", result);
+        router.replace("/dashboard");
         toast({
           title: "Success",
           description: "Login successful",
-          variant: "destructive",
+          variant: "default",
         });
       }
+      console.log(result?.url);
       if (result?.url) {
-        router.replace(`/dashboard`);
+        router.replace("/dashboard");
       }
     } catch (error) {
       console.log("unexpected error", error);

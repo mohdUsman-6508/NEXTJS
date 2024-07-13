@@ -93,7 +93,7 @@ export async function GET(request: Request) {
 
     return Response.json({
       success: true,
-      message: "User Message accepted fetched successfully",
+      message: "User Message accepted status fetched successfully",
       isAcceptingMessage: existedUser.isAcceptingMessage,
     });
   } catch (error) {

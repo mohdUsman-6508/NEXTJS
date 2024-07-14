@@ -135,7 +135,7 @@ const page = () => {
                         : "text-red-500"
                     }`}
                   >
-                    check: {usernameMessage}
+                    {usernameMessage}
                   </p>
                   {/* <FormDescription>
                   This is your public display name.

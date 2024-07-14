@@ -40,7 +40,6 @@ function page() {
   console.log(params.username);
 
   const onSubmit = async (data: z.infer<typeof verifySchema>) => {
-    console.log("inside it");
     setOtpVerifying(true);
     try {
       const verifyUrl = `/api/verify-otp`;
@@ -52,10 +51,9 @@ function page() {
         title: "Success",
         description: response.data.message,
       });
-      console.log(response);
+
       router.replace("/sign-in");
     } catch (error) {
-      console.log("Error in verifying otp up"); //TODO:
       const axiosError = error as AxiosError<ApiResponse>;
       let errorMessage = axiosError.response?.data.message;
       toast({

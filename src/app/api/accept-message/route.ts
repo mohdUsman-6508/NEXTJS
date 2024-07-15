@@ -14,7 +14,7 @@ export async function POST(request: Request) {
 
   const session = await getServerSession(authOptions);
   const user: User = session?.user as User;
-
+  console.log("post.....................", session);
   if (!session || !session.user) {
     return Response.json(
       {
@@ -70,6 +70,7 @@ export async function GET(request: Request) {
 
   const session = await getServerSession(authOptions);
   const user: User = session?.user as User;
+  console.log("geeeeeeetttttttttttttt...........................", user);
 
   if (!session || !session?.user) {
     return Response.json(
@@ -82,8 +83,10 @@ export async function GET(request: Request) {
   }
 
   const userId = user._id;
+
   try {
-    const existedUser = await UserModel.findById({ userId });
+    const existedUser = await UserModel.findOne({ _id: userId });
+    console.log("existeduserrrrrrrrrrrrrr.", existedUser);
     if (!existedUser) {
       return Response.json({
         success: false,

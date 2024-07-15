@@ -44,6 +44,10 @@ export async function DELETE(
         }
       );
     }
+    return Response.json({
+      success: true,
+      message: "Message deleted successfully",
+    });
   } catch (error) {
     console.log("Failed to delete message");
     return Response.json(

@@ -23,7 +23,7 @@ import { X } from "lucide-react";
 import { Message } from "@/model/User.model";
 import axios from "axios";
 import { ApiResponse } from "@/types/ApiResponse";
-import { toast } from "./ui/use-toast";
+import { useToast } from "@/components/ui/use-toast";
 
 type MessageCardProps = {
   message: Message;
@@ -31,26 +31,24 @@ type MessageCardProps = {
 };
 
 function MessageCard({ message, onMessageDelete }: MessageCardProps) {
+  const { toast } = useToast();
   const handleDeleteConfirm = async () => {
-    const response = await axios.delete<ApiResponse>(
-      `api/delete-message/${message._id}`
-    );
-    toast({
-      title: response.data.message,
-    });
+    const response = await axios.delete(`api/delete-message/${message._id}`);
     onMessageDelete(message._id as string);
   };
 
   return (
     <Card>
       <CardHeader>
-        <CardTitle>Card Title</CardTitle>
+        <CardTitle>Message</CardTitle>
         <AlertDialog>
-          <AlertDialogTrigger asChild>
-            <Button variant="destructive">
-              <X className="w-5 h-5" />
-            </Button>
-          </AlertDialogTrigger>
+          <div className="flex item-center justify-end">
+            <AlertDialogTrigger asChild>
+              <Button variant="destructive" className="w-12">
+                <X className="w-5 h-5" />
+              </Button>
+            </AlertDialogTrigger>
+          </div>
           <AlertDialogContent>
             <AlertDialogHeader>
               <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
@@ -67,7 +65,7 @@ function MessageCard({ message, onMessageDelete }: MessageCardProps) {
             </AlertDialogFooter>
           </AlertDialogContent>
         </AlertDialog>
-        <CardDescription>{message.toString()}</CardDescription>
+        <CardDescription>{message.content}</CardDescription>
       </CardHeader>
     </Card>
   );

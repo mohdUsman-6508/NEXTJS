@@ -1,7 +1,6 @@
 "use client";
 import * as React from "react";
 import Autoplay from "embla-carousel-autoplay";
-import useEmblaCarousel from "embla-carousel-react";
 
 import { Card, CardContent } from "@/components/ui/card";
 import {
@@ -200,6 +199,6 @@ const faqs = [
     id: 7,
     question: "How do I get started with Shadow Talk?",
     answer:
-      "Getting started is easy! Simply sign up with your email, create a profile, and start giving or receiving anonymous feedback. You can join discussions and begin your journey towards self-improvement right away.",
+      "Getting started is easy! Simply sign up with your email, create a profile, and start giving or receiving anonymous feedback.To give feedback paste the link of user profile in the search bar and press enter and there you go.",
   },
 ];

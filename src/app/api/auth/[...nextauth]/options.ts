@@ -59,7 +59,7 @@ export const authOptions: NextAuthOptions = {
         token._id = user._id?.toString();
         token.username = user.username;
         token.isVerified = user.isVerified;
-        token.isAcceptingMessages = user.isAcceptingMessages;
+        token.isAcceptingMessage = user.isAcceptingMessage;
         // idhar masla ho raha tha to types me jakar naye next-auth ke type define kare
       }
       return token;
@@ -68,7 +68,7 @@ export const authOptions: NextAuthOptions = {
       if (token) {
         session.user._id = token._id;
         session.user.isVerified = token.isVerified;
-        session.user.isAcceptingMessages = token.isAcceptingMessages;
+        session.user.isAcceptingMessage = token.isAcceptingMessage;
         session.user.username = token.username;
       }
       return session;

@@ -7,6 +7,7 @@ import { Button } from "./ui/button";
 import * as React from "react";
 import { Moon, Sun } from "lucide-react";
 import { useTheme } from "next-themes";
+import { Badge } from "@/components/ui/badge";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -27,12 +28,23 @@ function Navbar() {
         <Link href="/" className="text-2xl font-bold mb-4 md:mb-0">
           Shadow Talk
         </Link>
+
         {session ? (
           <>
             <span className="mr-4">Welcome, {user.username || user.email}</span>
-            <Button className="w-full md:w-auto" onClick={() => signOut()}>
-              Logout
-            </Button>
+            <div className="flex justify-center items-center gap-8">
+              <Link
+                href="/dashboard"
+                className="text-xl font-semi mb-4 md:mb-0"
+              >
+                <Badge variant="default" className="p-1 bg-green-500">
+                  Dashboard
+                </Badge>
+              </Link>
+              <Button className="w-full md:w-auto" onClick={() => signOut()}>
+                Logout
+              </Button>
+            </div>
           </>
         ) : (
           <>
